@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiruthika Venkatesan — Software Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fafafa;--white:#ffffff;--ink:#111111;--s1:#f4f4f2;--s2:#eeede9;
+  --card:#ffffff;--b1:rgba(17,17,17,0.07);--b2:rgba(17,17,17,0.13);
+  --muted:rgba(17,17,17,0.48);--dim:rgba(17,17,17,0.26);
+  --orange:#d4500a;--orange2:#fff3ed;--orange3:#f97316;
+  --green:#0a7a4a;--green2:#ecfdf5;
+  --blue:#1d4ed8;--blue2:#eff6ff;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Plus Jakarta Sans',sans-serif;
+  --mono:'DM Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,250,250,0.94);backdrop-filter:blur(20px);border-bottom:1px solid var(--b1);}
+.nl{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--ink);text-decoration:none;}
+.nl span{color:var(--orange);}
+.nr{display:flex;gap:2.25rem;list-style:none;}
+.nr a{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nr a:hover,.nr a.active{color:var(--orange);}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:9rem 4.5rem 6rem 5.5rem;position:relative;z-index:1;background:var(--white);}
+.hero-right{background:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:9rem 4rem 6rem;position:relative;overflow:hidden;}
+.hero-right::before{content:'';position:absolute;top:-20%;right:-20%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(212,80,10,.18) 0%,transparent 70%);pointer-events:none;}
+
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:2rem;opacity:0;animation:up .7s ease .1s forwards;}
+.eyebrow::before{content:'';width:20px;height:1.5px;background:var(--orange);}
+.hero-name{font-family:var(--serif);font-size:clamp(3rem,4.5vw,4.8rem);line-height:.95;font-weight:700;color:var(--ink);margin-bottom:1.5rem;opacity:0;animation:up .7s ease .25s forwards;}
+.hero-name em{font-style:italic;font-weight:300;color:var(--orange);}
+.hero-desc{font-size:.95rem;line-height:1.85;color:var(--muted);max-width:44ch;margin-bottom:2.75rem;opacity:0;animation:up .7s ease .4s forwards;}
+.hero-desc strong{color:var(--ink);font-weight:500;}
+.hero-cta{display:flex;gap:.875rem;flex-wrap:wrap;opacity:0;animation:up .7s ease .55s forwards;}
+.btn-p{display:inline-flex;align-items:center;gap:.45rem;background:var(--orange);color:#fff;padding:.85rem 1.875rem;font-size:.82rem;font-weight:500;letter-spacing:.03em;text-decoration:none;transition:all .22s;}
+.btn-p:hover{background:#b84008;transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,80,10,.25);}
+.btn-s{display:inline-flex;align-items:center;gap:.45rem;background:transparent;color:var(--ink);padding:.85rem 1.875rem;font-size:.82rem;font-weight:500;letter-spacing:.03em;text-decoration:none;border:1.5px solid var(--b2);transition:all .22s;}
+.btn-s:hover{border-color:var(--orange);color:var(--orange);}
+
+/* hero right grid */
+.m-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:rgba(255,255,255,.1);width:100%;opacity:0;animation:fade 1s ease .75s forwards;margin-bottom:1.5rem;}
+.mc{background:rgba(255,255,255,.06);padding:1.75rem 1.5rem;transition:background .2s;}
+.mc:hover{background:rgba(255,255,255,.12);}
+.mn{font-family:var(--serif);font-size:2.6rem;font-weight:700;line-height:1;margin-bottom:.3rem;color:#fff;}
+.ml{font-size:.67rem;color:rgba(255,255,255,.58);line-height:1.45;}
+
+.toolstack{width:100%;opacity:0;animation:fade 1s ease 1s forwards;}
+.ts-label{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.75rem;}
+.ts-pills{display:flex;flex-wrap:wrap;gap:.4rem;}
+.tp{font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.18);padding:.26rem .58rem;transition:all .2s;}
+.tp:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.4);}
+.tp.hi{border-color:rgba(212,80,10,.5);color:rgba(249,115,22,.85);}
+
+/* STRIP */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1);background:var(--white);}
+.si{padding:2.5rem 2rem;border-right:1px solid var(--b1);transition:background .2s;}
+.si:last-child{border-right:none;}
+.si:hover{background:var(--orange2);}
+.sn{font-family:var(--serif);font-size:2.8rem;font-weight:700;line-height:1;color:var(--orange);margin-bottom:.3rem;}
+.ss{font-size:.73rem;color:var(--muted);line-height:1.5;}
+
+/* SHARED */
+section{position:relative;z-index:1;}
+.con{max-width:1120px;margin:0 auto;padding:0 3.5rem;}
+.sh{display:flex;align-items:center;gap:1.25rem;margin-bottom:3.75rem;}
+.shn{font-family:var(--mono);font-size:.58rem;color:var(--orange);letter-spacing:.14em;}
+.sht{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--ink);line-height:1;}
+.shr{flex:1;height:1.5px;background:var(--b1);margin-left:.75rem;}
+
+/* EXPERIENCE */
+.exp-sec{padding:7rem 0;background:var(--white);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1);}
+.ei{display:grid;grid-template-columns:185px 1fr;gap:3.5rem;padding:2.75rem 0;border-bottom:1px solid var(--b1);opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s;}
+.ei.vis{opacity:1;transform:translateY(0);}
+.ei:last-child{border-bottom:none;}
+.eco{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.35rem;}
+.edt{font-size:.7rem;color:var(--muted);margin-bottom:.6rem;}
+.ebdg{display:inline-block;font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(212,80,10,.25);padding:.16rem .5rem;background:var(--orange2);}
+.er{font-family:var(--serif);font-size:1.42rem;font-weight:700;line-height:1.18;color:var(--ink);margin-bottom:.85rem;}
+.ed{font-size:.85rem;color:var(--muted);line-height:1.78;margin-bottom:1.1rem;}
+.ew{display:flex;flex-wrap:wrap;gap:.4rem;}
+.wt{font-family:var(--mono);font-size:.59rem;letter-spacing:.04em;background:var(--orange2);color:var(--orange);border:1px solid rgba(212,80,10,.18);padding:.24rem .58rem;transition:all .2s;}
+.wt:hover{background:var(--orange);color:#fff;}
+
+/* CAPABILITIES */
+.cap-sec{padding:7rem 0;background:var(--s1);}
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--b1);}
+.cg{background:var(--white);padding:2.25rem;transition:background .2s;position:relative;overflow:hidden;}
+.cg:hover{background:var(--orange2);}
+.cg::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.cg:hover::after{transform:scaleX(1);}
+.cg-num{font-family:var(--serif);font-size:2.4rem;font-weight:700;color:rgba(212,80,10,.18);line-height:1;margin-bottom:.6rem;}
+.cg-title{font-size:.88rem;font-weight:600;color:var(--ink);margin-bottom:.45rem;}
+.cg-desc{font-size:.76rem;color:var(--muted);line-height:1.65;}
+.cg-metric{margin-top:.9rem;padding:.5rem .75rem;background:var(--orange2);font-family:var(--mono);font-size:.6rem;color:var(--orange);letter-spacing:.04em;}
+
+/* PROJECTS */
+.proj-sec{padding:7rem 0;background:var(--white);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1);}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--b1);}
+.pc{background:var(--white);padding:2.75rem;position:relative;overflow:hidden;opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s,background .2s;}
+.pc.vis{opacity:1;transform:translateY(0);}
+.pc:hover{background:var(--orange2);}
+.pc::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--orange),var(--orange3),transparent);}
+.pn{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;color:var(--dim);margin-bottom:1.2rem;}
+.pt{font-family:var(--serif);font-size:1.38rem;font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:.6rem;}
+.ps{font-family:var(--mono);font-size:.57rem;letter-spacing:.07em;color:var(--orange);margin-bottom:1.2rem;}
+.pd{font-size:.83rem;color:var(--muted);line-height:1.78;margin-bottom:1.75rem;}
+.pr2{border-top:1px solid var(--b1);padding-top:1.4rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.rn{font-family:var(--serif);font-size:1.75rem;font-weight:700;line-height:1;margin-bottom:.2rem;color:var(--orange);}
+.rl{font-size:.62rem;color:var(--dim);line-height:1.4;}
+
+/* SKILLS */
+.sk-sec{padding:7rem 0;background:var(--s1);}
+.sk-layout{display:grid;grid-template-columns:1fr 2.2fr;gap:5rem;align-items:start;}
+.sk-quote{font-family:var(--serif);font-size:1.5rem;font-style:italic;color:var(--ink);line-height:1.45;position:relative;padding-top:1.5rem;}
+.sk-quote::before{content:'';position:absolute;top:0;left:0;width:30px;height:2px;background:var(--orange);}
+.sk-quote cite{display:block;font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);font-style:normal;margin-top:1rem;}
+.skg{display:flex;flex-direction:column;gap:2rem;}
+.skgl{font-family:var(--mono);font-size:.57rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.65rem;}
+.skgt{display:flex;flex-wrap:wrap;gap:.4rem;}
+.st{font-size:.78rem;padding:.33rem .78rem;background:var(--white);color:var(--muted);border:1px solid var(--b1);transition:all .2s;cursor:default;}
+.st:hover{border-color:var(--b2);color:var(--ink);}
+.st.hi{background:var(--orange2);color:var(--orange);border-color:rgba(212,80,10,.22);font-weight:500;}
+.st.hi:hover{background:var(--orange);color:#fff;border-color:var(--orange);}
+
+/* EDU */
+.edu-sec{padding:5rem 0;background:var(--white);border-top:1px solid var(--b1);}
+.edu-g{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--b1);}
+.ec{background:var(--white);padding:2.25rem;border-left:3px solid transparent;transition:all .2s;}
+.ec:hover{background:var(--orange2);border-left-color:var(--orange);}
+.ed2{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--ink);margin-bottom:.28rem;}
+.es{font-size:.78rem;color:var(--muted);margin-bottom:.85rem;}
+.er2{display:flex;gap:1.5rem;}
+.eg{font-family:var(--mono);font-size:.62rem;color:var(--orange);letter-spacing:.08em;font-weight:500;}
+.edt2{font-family:var(--mono);font-size:.62rem;color:var(--dim);letter-spacing:.06em;}
+
+/* CONTACT */
+.ct-sec{padding:8rem 0;text-align:center;background:var(--ink);position:relative;overflow:hidden;}
+.ct-sec::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(212,80,10,.12) 0%,transparent 70%);pointer-events:none;}
+.ct-ey{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;gap:.75rem;position:relative;z-index:1;}
+.ct-ey::before,.ct-ey::after{content:'';display:inline-block;width:28px;height:1px;background:rgba(255,255,255,.3);}
+.ct-h{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);font-weight:700;color:#fff;line-height:1.05;margin-bottom:1rem;position:relative;z-index:1;}
+.ct-h em{font-style:italic;font-weight:300;color:var(--orange3);}
+.ct-sub{font-size:.88rem;color:rgba(255,255,255,.48);margin-bottom:3rem;position:relative;z-index:1;}
+.ct-links{display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap;position:relative;z-index:1;}
+.cl{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:rgba(255,255,255,.6);text-decoration:none;padding:.7rem 1.4rem;border:1px solid rgba(255,255,255,.15);transition:all .2s;}
+.cl:hover{color:#fff;border-color:rgba(212,80,10,.5);background:rgba(212,80,10,.12);}
+
+footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,.06);padding:1.35rem 3.5rem;display:flex;justify-content:space-between;align-items:center;}
+.fn{font-family:var(--serif);font-size:.88rem;color:rgba(255,255,255,.25);font-style:italic;}
+.fr{font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;color:rgba(255,255,255,.18);}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fade{from{opacity:0;}to{opacity:1;}}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--b2);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nl">K<span>.</span>Venkatesan</a>
+  <ul class="nr">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="eyebrow">Software PM · 0-to-1 · Consumer Products · Palo Alto, CA</p>
+    <h1 class="hero-name">Kiruthika<br><em>Venkatesan</em></h1>
+    <p class="hero-desc">
+      Building <strong>consumer-facing software products from 0 to 1</strong> — defining product vision, executing roadmaps in Agile environments, and shipping high-quality software that achieves product-market fit at global scale. 5+ years of end-to-end product ownership across <strong>Engineering, UX/UI, and Marketing.</strong>
+    </p>
+    <div class="hero-cta">
+      <a href="#capabilities" class="btn-p">Product Capabilities →</a>
+      <a href="#contact" class="btn-s">Get in Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="m-grid">
+      <div class="mc"><div class="mn">84%</div><div class="ml">Consumer platform adoption · product-market fit achieved in 6 months</div></div>
+      <div class="mc"><div class="mn">44%</div><div class="ml">Platform adoption improvement · 0-to-1 product introduction</div></div>
+      <div class="mc"><div class="mn">100%</div><div class="ml">On-time delivery across 4 concurrent software product releases</div></div>
+      <div class="mc"><div class="mn">91%</div><div class="ml">Change adoption rate · Agile process improvement & automation</div></div>
+    </div>
+    <div class="toolstack">
+      <div class="ts-label">Tools & Agile stack</div>
+      <div class="ts-pills">
+        <span class="tp hi">Jira</span>
+        <span class="tp hi">Scrum</span>
+        <span class="tp hi">Kanban</span>
+        <span class="tp hi">Agile</span>
+        <span class="tp hi">Lean</span>
+        <span class="tp hi">CI/CD</span>
+        <span class="tp hi">Automation</span>
+        <span class="tp">Sprint Planning</span>
+        <span class="tp">Change Management</span>
+        <span class="tp">Process Improvement</span>
+        <span class="tp">Continuous Improvement</span>
+        <span class="tp">Python · SQL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="si"><div class="sn">0→1</div><div class="ss">Product introductions owned end-to-end — ideation through go-to-market execution</div></div>
+  <div class="si"><div class="sn">7+</div><div class="ss">Consumer software products shipped — Agile Scrum, Jira, Kanban across global teams</div></div>
+  <div class="si"><div class="sn">79%</div><div class="ss">MTTR improvement through data-driven product performance monitoring</div></div>
+  <div class="si"><div class="sn">31%</div><div class="ss">Customer-reported product issues reduced via multi-channel engagement</div></div>
+</div>
+
+<!-- EXPERIENCE -->
+<section class="exp-sec" id="experience">
+  <div class="con">
+    <div class="sh"><span class="shn">01</span><h2 class="sht">Experience</h2><div class="shr"></div></div>
+
+    <div class="ei">
+      <div>
+        <div class="eco">FINRA USA</div>
+        <div class="edt">May 2025 – Sep 2025</div>
+        <div class="ebdg">PM Intern · Consumer Platform</div>
+      </div>
+      <div>
+        <div class="er">Software Product Manager<br>Consumer Experience Platform</div>
+        <p class="ed">Owned full lifecycle of 0-to-1 product introduction from ideation through go-to-market execution. Defined compelling product vision for a consumer-facing software platform processing 75B+ daily transactions. Led sprint planning, backlog refinement, and milestone tracking in Jira using Kanban principles. Leveraged data analytics to monitor product performance. Provided technical mentorship to development team on automation and CI/CD improvements.</p>
+        <div class="ew">
+          <span class="wt">↑34% platform adoption</span>
+          <span class="wt">↓30% deploy cycle time</span>
+          <span class="wt">↓79% MTTR</span>
+          <span class="wt">↑40% release governance</span>
+          <span class="wt">↓38% manual workflows</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ei">
+      <div>
+        <div class="eco">Cognizant</div>
+        <div class="edt">Jul 2021 – Aug 2024</div>
+        <div class="ebdg">Full-time · 3 yrs</div>
+      </div>
+      <div>
+        <div class="er">Senior Software Product Manager<br>Consumer Platform & New Product Development</div>
+        <p class="ed">Led 0-to-1 new product development end-to-end — defined product vision, conducted market research identifying emerging technologies and competitive landscape, drove go-to-market execution for 4 consumer-facing software launches across global cross-functional teams. Owned Agile Scrum delivery in Jira across sprint planning, milestone tracking, and backlog management. Drove process improvement and change management. Engaged customers through surveys, usability sessions, beta feedback, and support escalations to capture feedback and advise product development.</p>
+        <div class="ew">
+          <span class="wt">84% adoption · 6 months</span>
+          <span class="wt">Product-market fit achieved</span>
+          <span class="wt">4 releases 100% on time</span>
+          <span class="wt">↑33% sprint efficiency</span>
+          <span class="wt">↑91% change adoption</span>
+          <span class="wt">↓31% customer issues</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ei">
+      <div>
+        <div class="eco">Cognizant</div>
+        <div class="edt">Jun 2020 – Jul 2021</div>
+        <div class="ebdg">Full-time · 1 yr</div>
+      </div>
+      <div>
+        <div class="er">Associate Software Product Manager<br>Consumer Software & Platform Products</div>
+        <p class="ed">Identified through customer discovery that 43% of consumers experienced critical software experience failures. Applied analytical mindset to gather and interpret data, understand user behavior, and measure revenue impact. Owned backlog in Jira and shipped improvements using Scrum sprints with UX/UI and engineering teams. Led new product introduction from concept through go-to-market using Lean and Agile Scrum.</p>
+        <div class="ew">
+          <span class="wt">↓29% experience failures</span>
+          <span class="wt">↑22% reliability</span>
+          <span class="wt">2-market launch on time</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="cap-sec" id="capabilities">
+  <div class="con">
+    <div class="sh"><span class="shn">02</span><h2 class="sht">Product Capabilities</h2><div class="shr"></div></div>
+    <div class="cap-grid">
+
+      <div class="cg">
+        <div class="cg-num">01</div>
+        <div class="cg-title">0-to-1 New Product Introduction</div>
+        <div class="cg-desc">Led full lifecycle from ideation through go-to-market execution — defining product vision, conducting market research, managing Agile Scrum sprints, and collaborating with Engineering, UX/UI, and Marketing to achieve product-market fit at global scale.</div>
+        <div class="cg-metric">84% adoption · 6 months · product-market fit achieved</div>
+      </div>
+
+      <div class="cg">
+        <div class="cg-num">02</div>
+        <div class="cg-title">Product Roadmap Definition & Execution</div>
+        <div class="cg-desc">Defined and executed product roadmaps in fast-paced tech environments — owning Agile Scrum delivery in Jira with Kanban principles across sprint planning, milestone tracking, and backlog management across global cross-functional teams.</div>
+        <div class="cg-metric">4 releases · 100% on time and on budget</div>
+      </div>
+
+      <div class="cg">
+        <div class="cg-num">03</div>
+        <div class="cg-title">Emerging Technology Integration</div>
+        <div class="cg-desc">Identified and integrated emerging technologies and new business models to expand product capabilities and differentiate consumer experience offerings — evaluating automation tools, new technology integrations, and applying principled decision-making across executive stakeholders.</div>
+        <div class="cg-metric">↑37% customer retention · ↓41% engineering defects</div>
+      </div>
+
+      <div class="cg">
+        <div class="cg-num">04</div>
+        <div class="cg-title">Data-Driven Product Decisions</div>
+        <div class="cg-desc">Leveraged data analytics tools to monitor product performance, identify improvement areas, and drive data-driven decisions — built consumer behavior frameworks, tracked feature utilization and revenue impact, and used continuous improvement process to iterate rapidly.</div>
+        <div class="cg-metric">↑44% revenue opportunity identification · ↑36% decision velocity</div>
+      </div>
+
+      <div class="cg">
+        <div class="cg-num">05</div>
+        <div class="cg-title">Process Improvement & Change Management</div>
+        <div class="cg-desc">Drove Lean and Kanban process improvement to eliminate waste in sprint cycles, led change management introducing automation tooling to global development teams, and established continuous improvement processes accelerating delivery cadence.</div>
+        <div class="cg-metric">↑33% sprint efficiency · 91% change adoption rate</div>
+      </div>
+
+      <div class="cg">
+        <div class="cg-num">06</div>
+        <div class="cg-title">Customer Engagement & Feedback Loops</div>
+        <div class="cg-desc">Engaged customers through multiple channels — surveys, usability sessions, beta feedback, support escalations — to capture feedback, identify product issues, and directly advise product development; collaborated with Engineering, UX/UI, and Marketing to action insights into sprint backlog.</div>
+        <div class="cg-metric">↓31% customer-reported issues · ↑26% feature satisfaction</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="proj-sec" id="projects">
+  <div class="con">
+    <div class="sh"><span class="shn">03</span><h2 class="sht">Key Projects</h2><div class="shr"></div></div>
+    <div class="pg">
+      <div class="pc">
+        <div class="pn">PROJECT 01 / 02</div>
+        <h3 class="pt">0-to-1 Consumer Software Platform: New Product Introduction & Go-to-Market</h3>
+        <div class="ps">18 MONTHS · LEAD PM · JIRA · AGILE/SCRUM · PYTHON · REST APIs · CI/CD · ANALYTICS</div>
+        <p class="pd">Consumer software teams rebuilt product features independently with no unified platform, creating 23% QoQ growth in experience failures and no path to product-market fit. Led full lifecycle 0-to-1 new product introduction: defined compelling product vision and roadmap, conducted market research identifying emerging technologies, managed Agile Scrum sprints in Jira with Kanban principles, collaborated with Engineering, UX/UI, and Marketing across global cross-functional teams, and drove go-to-market execution.</p>
+        <div class="pr2">
+          <div><div class="rn">44%</div><div class="rl">Consumer platform adoption improvement</div></div>
+          <div><div class="rn">83%</div><div class="rl">Experience failure reduction (1-in-6 to 1-in-31)</div></div>
+          <div><div class="rn">6mo</div><div class="rl">Time to product-market fit achieved</div></div>
+          <div><div class="rn">41%</div><div class="rl">Go-to-market velocity improvement</div></div>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pn">PROJECT 02 / 02</div>
+        <h3 class="pt">Consumer Analytics & Product Performance Platform: Data-Driven Decisions at Scale</h3>
+        <div class="ps">10 MONTHS · PM · ANALYTICS · SQL · PYTHON · DASHBOARDS · JIRA · AUTOMATION</div>
+        <p class="pd">Product teams lacked data visibility into consumer behavior and feature performance, blocking data-driven decisions and revenue opportunity identification. Built analytics framework leveraging data analytics tools to monitor product performance — tracked consumer engagement, feature adoption, and revenue impact; implemented continuous improvement process with automated monitoring and alerting; engaged customers through multiple channels to capture feedback.</p>
+        <div class="pr2">
+          <div><div class="rn">36%</div><div class="rl">Data-driven decision velocity improved</div></div>
+          <div><div class="rn">28%</div><div class="rl">Consumer engagement improved</div></div>
+          <div><div class="rn">33%</div><div class="rl">Product iteration cycle time cut</div></div>
+          <div><div class="rn">44%</div><div class="rl">Revenue opportunity identification improved</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="sk-sec" id="skills">
+  <div class="con">
+    <div class="sh"><span class="shn">04</span><h2 class="sht">Skills & Stack</h2><div class="shr"></div></div>
+    <div class="sk-layout">
+      <div>
+        <p class="sk-quote">
+          "Define, execute and deliver the product roadmap — from ideation through go-to-market."
+          <cite>— Software PM, 2026</cite>
+        </p>
+      </div>
+      <div class="skg">
+        <div>
+          <div class="skgl">Product Management</div>
+          <div class="skgt">
+            <span class="st hi">0-to-1 New Product Introduction</span>
+            <span class="st hi">Product Roadmap</span>
+            <span class="st hi">Go-to-Market Execution</span>
+            <span class="st hi">Product Vision</span>
+            <span class="st hi">Product-Market Fit</span>
+            <span class="st">Full Product Lifecycle</span>
+            <span class="st">New Product Development</span>
+          </div>
+        </div>
+        <div>
+          <div class="skgl">Agile & Tools</div>
+          <div class="skgt">
+            <span class="st hi">Jira</span>
+            <span class="st hi">Scrum</span>
+            <span class="st hi">Kanban</span>
+            <span class="st hi">Sprint Planning</span>
+            <span class="st hi">Lean</span>
+            <span class="st hi">Agile Methodology</span>
+            <span class="st">CI/CD</span>
+            <span class="st">Automation</span>
+            <span class="st">Change Management</span>
+            <span class="st">Continuous Improvement</span>
+          </div>
+        </div>
+        <div>
+          <div class="skgl">Analytics & Research</div>
+          <div class="skgt">
+            <span class="st hi">Data Analytics</span>
+            <span class="st hi">Market Research</span>
+            <span class="st hi">Competitive Analysis</span>
+            <span class="st">Consumer Behavior Analysis</span>
+            <span class="st">KPI Frameworks</span>
+            <span class="st">Python · SQL</span>
+            <span class="st">Revenue Impact</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDU -->
+<section class="edu-sec">
+  <div class="con">
+    <div class="sh"><span class="shn">05</span><h2 class="sht">Education</h2><div class="shr"></div></div>
+    <div class="edu-g">
+      <div class="ec">
+        <div class="ed2">Master of Science — Information Technology</div>
+        <div class="es">University of Denver · Currently enrolled</div>
+        <div class="er2"><span class="eg">GPA 3.97 / 4.0</span><span class="edt2">Aug 2024 – May 2026</span></div>
+      </div>
+      <div class="ec">
+        <div class="ed2">Bachelor of Engineering — Computer Science</div>
+        <div class="es">Anna University</div>
+        <div class="er2"><span class="eg">GPA 3.8 / 4.0</span><span class="edt2">Aug 2017 – May 2021</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="ct-sec" id="contact">
+  <div class="con">
+    <div class="ct-ey">Open to opportunities</div>
+    <h2 class="ct-h">Let's build software products<br>that <em>consumers love.</em></h2>
+    <p class="ct-sub">Available for Software PM roles · Palo Alto, CA · Consumer-facing products · Agile environments</p>
+    <div class="ct-links">
+      <a href="mailto:kiruthikavenkat2704@gmail.com" class="cl">✉ &nbsp;kiruthikavenkat2704@gmail.com</a>
+      <a href="tel:+17208135590" class="cl">✆ &nbsp;(720) 813-5590</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="fn">Kiruthika Venkatesan</span>
+  <span class="fr">Software PM · Consumer Products Portfolio · 2026</span>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('vis'),i*90);});
+},{threshold:.07});
+document.querySelectorAll('.ei,.pc').forEach(el=>obs.observe(el));
+const secs=document.querySelectorAll('section[id]');
+const links=document.querySelectorAll('.nr a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-150)cur=s.id;});
+  links.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+});
+</script>
+</body>
+</html>
